@@ -1,20 +1,23 @@
 <?php
-// set your secret key: remember to change this to your live secret key in production
-// see your keys here https://manage.stripe.com/account
-Stripe::setApiKey("20CFf2y7xRHoVezUgAIDeX8rJFgWytkg");
+if($_POST) {
+  // set your secret key: remember to change this to your live secret key in production
+  // see your keys here https://manage.stripe.com/account
+  Stripe::setApiKey("20CFf2y7xRHoVezUgAIDeX8rJFgWytkg");
 
-// get the credit card details submitted by the form
-$token = $_POST['stripeToken'];
-$invoice = $_POST['invoice'];
-$amount = $_POST['amount'] * 100;
+  // get the credit card details submitted by the form
+  $token = $_POST['stripeToken'];
+  $invoice = $_POST['invoice'];
+  $amount = $_POST['amount'] * 100;
 
-// create the charge on Stripe's servers - this will charge the user's card
-$charge = Stripe_Charge::create(array(
-  "amount" => $amount, // amount in cents, again
-  "currency" => "usd",
-  "card" => $token,
-  "description" => "Invoice: $invoice")
-);
+  // create the charge on Stripe's servers - this will charge the user's card
+  $charge = Stripe_Charge::create(array(
+    "amount" => $amount, // amount in cents, again
+    "currency" => "usd",
+    "card" => $token,
+    "description" => "Invoice: $invoice")
+  );
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
