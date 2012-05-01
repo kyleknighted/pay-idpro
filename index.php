@@ -1,3 +1,21 @@
+<?php
+// set your secret key: remember to change this to your live secret key in production
+// see your keys here https://manage.stripe.com/account
+Stripe::setApiKey("20CFf2y7xRHoVezUgAIDeX8rJFgWytkg");
+
+// get the credit card details submitted by the form
+$token = $_POST['stripeToken'];
+$invoice = $_POST['invoice'];
+$amount = $_POST['amount'] * 100;
+
+// create the charge on Stripe's servers - this will charge the user's card
+$charge = Stripe_Charge::create(array(
+  "amount" => $amount, // amount in cents, again
+  "currency" => "usd",
+  "card" => $token,
+  "description" => "Invoice: $invoice")
+);
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -45,8 +63,28 @@
     
     <script src="js/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/jquery.creditcard.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
     
     <script>
+    Stripe.setPublishableKey('pk_fRxCsPx1cntNqqVD6WG1yO1Ill4Ir');
+
+    function stripeResponseHandler(status, response) {
+      if (response.error) {
+        // re-enable the submit button
+        $('.submit-button').removeAttr("disabled");
+        // show the errors on the form
+        $(".payment-errors").html(response.error.message);
+      } else {
+        var form$ = $("#gkmpay");
+        // token contains id, last4, and card type
+        var token = response['id'];
+        // insert the token into the form so it gets submitted to the server
+        form$.append("<input type='hidden' name='stripeToken' value='" + token + "' />");
+        // and submit
+        form$.get(0).submit();
+      }
+    }
+
     $(function(){
       $('#ccard').creditcard({
         'cardType' :  '#card-type',
@@ -54,11 +92,30 @@
       });
 
       $('#gkmpay').submit(function(e){
+        $('.submit-button').attr("disabled", "disabled");
         $('input', this).each(function(){
           if($(this).val() == '') {
-            addClass('error');
+            $(this).parents('.control-group').addClass('error');
+          } else {
+            $(this).parents('.control-group').removeClass('error');
           }
         });
+        $('select', this).each(function(){
+          if($(this).val() == '') {
+            $(this).parents('.control-group').addClass('error');
+          } else {
+            $(this).parents('.control-group').removeClass('error');
+          }
+        });
+
+        if($('.error').length === 0) {
+          Stripe.createToken({
+            number: $('#ccard').val(),
+            cvc: $('#cccvv').val(),
+            exp_month: $('#exp_mm').val(),
+            exp_year: $('#exp_yy').val()
+          }, stripeResponseHandler);
+        }
         e.preventDefault();
       });
     });
@@ -97,8 +154,9 @@
 
       <!-- Example row of columns -->
       <div class="row">
-        <div class="span5">
-          <form action="/" method="post" id="gkmpay">
+
+        <form action="/" method="post" id="gkmpay">
+          <div class="span5">
             <legend>Billing Info</legend>
             <fieldset class="control-group">
               <label class="control-label" for="billing-name">Full Name</label>
@@ -142,73 +200,88 @@
                 <input type="text" class="xlarge" id="billing-email" name="billing-email">
               </div>
             </fieldset>
-          </form>
-        </div>
-        <div class="span6">
-          <form action="" method="post">
-            <legend>Enter Billing Info</legend>
-            <fieldset class="control-group">
-              <label class="control-label" for="ccard">Credit Card Number</label>
-              <div class="controls">
-                <input type="text" class="xlarge" id="ccard" name="ccard">
-                <p class="help-text">We accept Visa, MasterCard, Discover, and Amex.</p>
-              </div>
-            </fieldset>
-            <fieldset class="control-group">
-              <label class="control-label" for="card-type">Choose Card Type</label>
-              <div class="controls">
-                <select name="card-type" id="card-type">
-                  <option value="">Select One</option>
-                  <option value="visa">Visa</option>
-                  <option value="mc">MasterCard</option>
-                  <option value="disc">Discover</option>
-                  <option value="amex">American Express</option>
-                </select>
-              </div>
-            </fieldset>
-            <fieldset class="control-group">
-              <label class="control-label" for="ccard">Expiration Date MM/YY</label>
-              <div class="controls">
-                <select name="exp_mm">
-                  <option value="">MM</option>
-                  <option value="01">01</option>
-                  <option value="02">02</option>
-                  <option value="03">03</option>
-                  <option value="04">04</option>
-                  <option value="05">05</option>
-                  <option value="06">06</option>
-                  <option value="07">07</option>
-                  <option value="08">08</option>
-                  <option value="09">09</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                </select>
-                <select name="exp_yy">
-                  <option value="">YY</option>
-                  <option value="12">12</option>
-                  <option value="13">13</option>
-                  <option value="14">14</option>
-                  <option value="15">15</option>
-                  <option value="16">16</option>
-                  <option value="17">17</option>
-                  <option value="18">18</option>
-                </select>
-              </div>
-            </fieldset>
-            <fieldset class="control-group">
-              <label class="control-label" for="cccvv">Security Code (CSV/CVV)</label>
-              <div class="controls">
-                <input type="text" class="xlarge" id="cccvv" name="cccvv">
-                <p class="help-text">It's usually a three digit number on the back of your card</p>
-              </div>
-              <div id="card-type"></div>
-            </fieldset>
-            <fieldset class="form-actions">
-              <input type="submit" class="btn btn-primary" value="Pay!">
-            </fieldset>
-          </form>
-        </div>
+          </div>
+          <div class="span6">
+              <legend>Enter Billing Info</legend>
+              <fieldset class="control-group">
+                <label class="control-label" for="amount">Amount Paying</label>
+                <div class="controls">
+                  <input type="text" class="xlarge" id="amount" name="amount">
+                  <p class="help-text">Please do not include the dollar sign ($)</p>
+                </div>
+              </fieldset>
+              <fieldset class="control-group">
+                <label class="control-label" for="invoice">Invoice Number</label>
+                <div class="controls">
+                  <input type="text" class="xlarge" id="invoice" name="invoice">
+                  <p class="help-text">Please include the invoice number you are paying against</p>
+                </div>
+              </fieldset>
+              <fieldset class="control-group">
+                <label class="control-label" for="ccard">Credit Card Number</label>
+                <div class="controls">
+                  <input type="text" class="xlarge" id="ccard" name="ccard">
+                  <p class="help-text">We accept Visa, MasterCard, Discover, and Amex.</p>
+                </div>
+              </fieldset>
+              <fieldset class="control-group">
+                <label class="control-label" for="card-type">Choose Card Type</label>
+                <div class="controls">
+                  <select name="card-type" id="card-type">
+                    <option value="">Select One</option>
+                    <option value="visa">Visa</option>
+                    <option value="mc">MasterCard</option>
+                    <option value="disc">Discover</option>
+                    <option value="amex">American Express</option>
+                  </select>
+                </div>
+              </fieldset>
+              <fieldset class="control-group">
+                <label class="control-label" for="ccard">Expiration Date MM/YY</label>
+                <div class="controls">
+                  <select name="exp_mm" id="exp_mm">
+                    <option value="">MM</option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+                    <option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                  <select name="exp_yy" id="exp_yy">
+                    <option value="">YY</option>
+                    <option value="2012">12</option>
+                    <option value="2013">13</option>
+                    <option value="2014">14</option>
+                    <option value="2015">15</option>
+                    <option value="2016">16</option>
+                    <option value="2017">17</option>
+                    <option value="2018">18</option>
+                    <option value="2019">19</option>
+                    <option value="2020">20</option>
+                  </select>
+                </div>
+              </fieldset>
+              <fieldset class="control-group">
+                <label class="control-label" for="cccvv">Security Code (CSV/CVV)</label>
+                <div class="controls">
+                  <input type="text" class="xlarge" id="cccvv" name="cccvv">
+                  <p class="help-text">It's usually a three digit number on the back of your card</p>
+                </div>
+                <div id="card-type"></div>
+              </fieldset>
+              <fieldset class="form-actions">
+                <input type="submit" class="btn btn-primary submit-button" value="Pay!">
+              </fieldset>
+            </form>
+          </div>
+        </form>
       </div>
       
 

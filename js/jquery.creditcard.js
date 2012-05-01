@@ -60,10 +60,10 @@
         // validate card number against number range and count
         $.each(cardRegex, function (index, value) {
           if (value.test(cnum)) {
-            $('li.' + index, typeWrapper).addClass('active');
-          
+            $('li.' + index, typeWrapper).addClass('active'); 
+            $('#card-type option[value="'+index+'"]').prop('selected', true);
             // validate card against known test numbers
-            $.each(test_numbers, function (index, value) {
+            $.each(testNumbers, function (index, value) {
               if (value == cnum) {
                 messageWrap.text('Warning: This is a known test number.').removeClass().addClass('cc-warning');
                 return false;
