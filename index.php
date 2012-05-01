@@ -73,11 +73,14 @@ if($_POST) {
     Stripe.setPublishableKey('pk_fRxCsPx1cntNqqVD6WG1yO1Ill4Ir');
 
     function stripeResponseHandler(status, response) {
+      console.log(status);
+      console.log(response);
       if (response.error) {
         // re-enable the submit button
         $('.submit-button').removeAttr("disabled");
         // show the errors on the form
         $(".payment-errors").html(response.error.message);
+        console.log(response.error.message);
       } else {
         var form$ = $("#gkmpay");
         // token contains id, last4, and card type
@@ -85,7 +88,7 @@ if($_POST) {
         // insert the token into the form so it gets submitted to the server
         form$.append("<input type='hidden' name='stripeToken' value='" + token + "' />");
         // and submit
-        form$.get(0).submit();
+        form$.post(0).submit();
       }
     }
 
