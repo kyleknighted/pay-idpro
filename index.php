@@ -155,11 +155,14 @@ if($_POST) {
       </div>
 
       <!-- Example row of columns -->
-      <div class="row">
-        <div class="span12">
-          <p class="payment-errors error"></p>
+
+      <form action="/" method="post" id="gkmpay">
+        <div class="row">
+          <div class="span12">
+            <p class="payment-errors error"></p>
+          </div>
         </div>
-        <form action="/" method="post" id="gkmpay">
+        <div class="row">
           <div class="span6">
             <legend>Personal Info</legend>
             <fieldset class="control-group">
@@ -282,13 +285,15 @@ if($_POST) {
               </fieldset>
             </form>
           </div>
+        </div>
+        <div class="row">
           <div class="span12">
             <fieldset class="form-actions">
               <input type="submit" class="btn primary submit-button" value="Pay!">
             </fieldset>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
       
 
       <footer>
