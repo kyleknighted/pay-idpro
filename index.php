@@ -164,7 +164,7 @@ if($_POST) {
         <p>Your payment has been processed.</p>
         <p>Please contact me at <a href="mailto:kyle@idprojections.com">kyle@idprojections.com</a> if you have any issues using this system.</p>
       </div>
-      <?php } else ?>
+      <?php } else { ?>
       <div class="hero-unit">
         <h1>Welcome to GKMOPPMYLEBNYDHMMC!</h1>
         <p>Which stands for 'Good Knight Multimedia Online Payment Processor to Make Your Life Easier Because Now You Don't Have to Mail Me a Check'.</p>
