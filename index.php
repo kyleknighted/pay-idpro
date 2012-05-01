@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Able Credit Card</title>
+    <title>Good Knight Mulimedia - Online Payment</title>
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Kyle Knight">
 
     <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
     <!--[if lt IE 9]>
@@ -14,8 +14,8 @@
     <!-- Le styles -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
-      body {
-        padding-top: 60px;
+      .container {
+        padding-top: 30px;
       }
       #jqcard-type { margin: 0; padding: 0; float: left; }
       #jqcard-type li {
@@ -52,15 +52,6 @@
         'cardType' :  '#card-type',
         'cardNames'   :  {'mc' : 'MasterCard', 'visa' : 'Visa', 'disc' : 'Discover', 'amex' : 'American Express'}
       });
-      
-      $('#shipto-choice input').click(function(){
-        var val = $(this).val();
-        if(val === 'Yes') {
-          $('#shipto-address').slideUp();
-        } else {
-          $('#shipto-address').slideDown();
-        }
-      });
     });
     </script>
 
@@ -90,9 +81,9 @@
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
-        <h1>Hello, world!</h1>
-        <p>Vestibulum id ligula porta felis euismod semper. Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
-        <p><a class="btn primary large">Learn more &raquo;</a></p>
+        <h1>Welcome to GKMOPPMYLEBNYDHMMC!</h1>
+        <p>Which stands for 'Good Knight Multimedia Online Payment Processor to Make Your Life Easier Because Now You Don't Have to Mail Me a Check'.</p>
+        <p>Please contact me at <a href="mailto:kyle@idprojections.com">kyle@idprojections.com</a> if you have any issues using this system.</p>
       </div>
 
       <!-- Example row of columns -->
@@ -140,19 +131,6 @@
               <label class="control-label" for="billing-email">Email Address</label>
               <div class="controls">
                 <input type="text" class="xlarge" id="billing-email" name="billing-email">
-              </div>
-            </fieldset>
-            <fieldset class="control-group">
-              <label class="control-label" for="billing-shipto">Ship to Billing Address?</label>
-              <div class="control-list" id="shipto-choice">
-                <label>
-                  <input type="radio" checked="checked" name="billing-shipto" value="Yes">
-                  <span>Yes. Ship it directly to me.</span>
-                </label>
-                <label>
-                  <input type="radio" name="billing-shipto" value="No">
-                  <span>No. Please ship it to another address.</span>
-                </label>
               </div>
             </fieldset>
           </form>
@@ -217,49 +195,16 @@
               </div>
               <div id="card-type"></div>
             </fieldset>
-          </form>
-        </div>
-      </div>
-      <div class="row">
-        <div class="span5" id="shipto-address">
-          <form action="" method="post">
-            <legend>Shipping Info</legend>
-            <fieldset class="control-group">
-              <label class="control-label" for="shipping-name">Full Name</label>
-              <div class="controls">
-                <input type="text" class="xlarge" id="shipping-name" name="shipping-name">
-              </div>
-            </fieldset>
-            <fieldset class="control-group">
-              <label class="control-label" for="shipping-address">Address</label>
-              <div class="controls">
-                <input type="text" class="xlarge" id="shipping-address" name="shipping-address">
-              </div>
-            </fieldset>
-            <fieldset class="control-group">
-              <label class="control-label" for="shipping-city">City</label>
-              <div class="controls">
-                <input type="text" class="xlarge" id="shipping-city" name="shipping-city">
-              </div>
-            </fieldset>
-            <fieldset class="control-group">
-              <label class="control-label" for="shipping-state">State</label>
-              <div class="controls">
-                <input type="text" class="xlarge" id="shipping-state" name="shipping-state">
-              </div>
-            </fieldset>
-            <fieldset class="control-group">
-              <label class="control-label" for="shipping-code">Postal Code</label>
-              <div class="controls">
-                <input type="text" class="xlarge" id="shipping-code" name="shipping-code">
-              </div>
+            <fieldset class="form-actions">
+              <input type="submit" class="btn btn-primary" value="Pay!">
             </fieldset>
           </form>
         </div>
       </div>
+      
 
       <footer>
-        <p>&copy; The Able Few 2012</p>
+        <p>&copy; Good Knight Multimedia <?php echo date('Y'); ?></p>
       </footer>
 
     </div> <!-- /container -->
