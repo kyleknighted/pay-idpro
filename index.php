@@ -101,6 +101,7 @@ if($_POST) {
           if($(this).val() == '') {
             $(this).parents('.control-group').addClass('error');
             $('.payment-errors').text('All fields are required.');
+            $('.submit-button').removeAttr("disabled");
           } else {
             $(this).parents('.control-group').removeClass('error');
           }
@@ -109,6 +110,7 @@ if($_POST) {
           if($(this).val() == '') {
             $(this).parents('.control-group').addClass('error');
             $('.payment-errors').text('All fields are required.');
+            $('.submit-button').removeAttr("disabled");
           } else {
             $(this).parents('.control-group').removeClass('error');
           }
