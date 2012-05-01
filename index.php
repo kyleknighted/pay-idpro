@@ -127,6 +127,9 @@ if($_POST) {
             exp_month: $('#exp_mm').val(),
             exp_year: $('#exp_yy').val()
           }, stripeResponseHandler);
+        } else {
+          $('.payment-errors').text('All fields are required.');
+          $('.submit-button').removeAttr("disabled");
         }
         e.preventDefault();
       });
@@ -164,7 +167,7 @@ if($_POST) {
       <form action="/" method="post" id="gkmpay">
         <div class="row">
           <div class="span12">
-            <p class="payment-errors error"></p>
+            <p class="payment-errors"></p>
           </div>
         </div>
         <div class="row">
