@@ -52,6 +52,15 @@
         'cardType' :  '#card-type',
         'cardNames'   :  {'mc' : 'MasterCard', 'visa' : 'Visa', 'disc' : 'Discover', 'amex' : 'American Express'}
       });
+
+      $('#gkmpay').submit(function(e){
+        $('input', this).each(function(){
+          if($(this).val() == '') {
+            addClass('error');
+          }
+        });
+        e.preventDefault();
+      });
     });
     </script>
 
@@ -89,7 +98,7 @@
       <!-- Example row of columns -->
       <div class="row">
         <div class="span5">
-          <form action="" method="post">
+          <form action="/" method="post" id="gkmpay">
             <legend>Billing Info</legend>
             <fieldset class="control-group">
               <label class="control-label" for="billing-name">Full Name</label>
