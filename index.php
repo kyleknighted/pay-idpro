@@ -4,7 +4,7 @@ if($_POST) {
   require_once("stripe/lib/Stripe.php");
   // set your secret key: remember to change this to your live secret key in production
   // see your keys here https://manage.stripe.com/account
-  Stripe::setApiKey("20CFf2y7xRHoVezUgAIDeX8rJFgWytkg");
+  Stripe::setApiKey("FWKIeIfYZ7eqs5Y41MMWYHhPETL9mKVE");
 
   // get the credit card details submitted by the form
   $token = $_POST['stripeToken'];
@@ -72,17 +72,17 @@ if($_POST) {
     <script type="text/javascript" src="https://js.stripe.com/v1/"></script>
     
     <script>
-    Stripe.setPublishableKey('pk_fRxCsPx1cntNqqVD6WG1yO1Ill4Ir');
+    Stripe.setPublishableKey('pk_yb2r3xnnIHemFYphFb9oNWqG9yDlN');
 
     function stripeResponseHandler(status, response) {
-      console.log(status);
-      console.log(response);
+      // console.log(status);
+      // console.log(response);
       if (response.error) {
         // re-enable the submit button
         $('.submit-button').removeAttr("disabled");
         // show the errors on the form
         $(".payment-errors").html(response.error.message);
-        console.log(response.error.message);
+        // console.log(response.error.message);
       } else {
         var form$ = $("#gkmpay");
         // token contains id, last4, and card type
