@@ -209,81 +209,80 @@ if($_POST) {
             </fieldset>
           </div>
           <div class="span6">
-              <legend>Billing Info</legend>
-              <fieldset class="control-group">
-                <label class="control-label" for="amount">Amount Paying</label>
-                <div class="controls">
-                  <input type="text" class="xlarge" id="amount" name="amount">
-                  <p class="help-text">Please do not include the dollar sign ($)</p>
-                </div>
-              </fieldset>
-              <fieldset class="control-group">
-                <label class="control-label" for="invoice">Invoice Number</label>
-                <div class="controls">
-                  <input type="text" class="xlarge" id="invoice" name="invoice">
-                  <p class="help-text">Please include the invoice number you are paying against</p>
-                </div>
-              </fieldset>
-              <fieldset class="control-group">
-                <label class="control-label" for="ccard">Credit Card Number</label>
-                <div class="controls">
-                  <input type="text" class="xlarge" id="ccard" name="ccard">
-                  <p class="help-text">We accept Visa, MasterCard, Discover, and Amex.</p>
-                </div>
-              </fieldset>
-              <fieldset class="control-group">
-                <label class="control-label" for="card-type">Card Type</label>
-                <div class="controls">
-                  <select name="card-type" id="card-type">
-                    <option value="">Select One</option>
-                    <option value="visa">Visa</option>
-                    <option value="mc">MasterCard</option>
-                    <option value="disc">Discover</option>
-                    <option value="amex">American Express</option>
-                  </select>
-                </div>
-              </fieldset>
-              <fieldset class="control-group">
-                <label class="control-label" for="ccard">Expiration Date MM/YY</label>
-                <div class="controls">
-                  <select name="exp_mm" id="exp_mm">
-                    <option value="">MM</option>
-                    <option value="01">01</option>
-                    <option value="02">02</option>
-                    <option value="03">03</option>
-                    <option value="04">04</option>
-                    <option value="05">05</option>
-                    <option value="06">06</option>
-                    <option value="07">07</option>
-                    <option value="08">08</option>
-                    <option value="09">09</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                  </select>
-                  <select name="exp_yy" id="exp_yy">
-                    <option value="">YY</option>
-                    <option value="2012">12</option>
-                    <option value="2013">13</option>
-                    <option value="2014">14</option>
-                    <option value="2015">15</option>
-                    <option value="2016">16</option>
-                    <option value="2017">17</option>
-                    <option value="2018">18</option>
-                    <option value="2019">19</option>
-                    <option value="2020">20</option>
-                  </select>
-                </div>
-              </fieldset>
-              <fieldset class="control-group">
-                <label class="control-label" for="cccvv">Security Code (CSV/CVV)</label>
-                <div class="controls">
-                  <input type="text" class="xlarge" id="cccvv" name="cccvv">
-                  <p class="help-text">It's usually a three digit number on the back of your card</p>
-                </div>
-                <div id="card-type"></div>
-              </fieldset>
-            </form>
+            <legend>Billing Info</legend>
+            <fieldset class="control-group">
+              <label class="control-label" for="amount">Amount Paying</label>
+              <div class="controls">
+                <input type="text" class="xlarge" id="amount" name="amount">
+                <p class="help-text">Please do not include the dollar sign ($)</p>
+              </div>
+            </fieldset>
+            <fieldset class="control-group">
+              <label class="control-label" for="invoice">Invoice Number</label>
+              <div class="controls">
+                <input type="text" class="xlarge" id="invoice" name="invoice">
+                <p class="help-text">Please include the invoice number you are paying against</p>
+              </div>
+            </fieldset>
+            <fieldset class="control-group">
+              <label class="control-label" for="ccard">Credit Card Number</label>
+              <div class="controls">
+                <input type="text" class="xlarge" id="ccard" name="ccard">
+                <p class="help-text">We accept Visa, MasterCard, Discover, and Amex.</p>
+              </div>
+            </fieldset>
+            <fieldset class="control-group">
+              <label class="control-label" for="card-type">Card Type</label>
+              <div class="controls">
+                <select name="card-type" id="card-type">
+                  <option value="">Select One</option>
+                  <option value="visa">Visa</option>
+                  <option value="mc">MasterCard</option>
+                  <option value="disc">Discover</option>
+                  <option value="amex">American Express</option>
+                </select>
+              </div>
+            </fieldset>
+            <fieldset class="control-group">
+              <label class="control-label" for="ccard">Expiration Date MM/YY</label>
+              <div class="controls">
+                <select name="exp_mm" id="exp_mm">
+                  <option value="">MM</option>
+                  <option value="01">01</option>
+                  <option value="02">02</option>
+                  <option value="03">03</option>
+                  <option value="04">04</option>
+                  <option value="05">05</option>
+                  <option value="06">06</option>
+                  <option value="07">07</option>
+                  <option value="08">08</option>
+                  <option value="09">09</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                </select>
+                <select name="exp_yy" id="exp_yy">
+                  <option value="">YY</option>
+                  <option value="2012">12</option>
+                  <option value="2013">13</option>
+                  <option value="2014">14</option>
+                  <option value="2015">15</option>
+                  <option value="2016">16</option>
+                  <option value="2017">17</option>
+                  <option value="2018">18</option>
+                  <option value="2019">19</option>
+                  <option value="2020">20</option>
+                </select>
+              </div>
+            </fieldset>
+            <fieldset class="control-group">
+              <label class="control-label" for="cccvv">Security Code (CSV/CVV)</label>
+              <div class="controls">
+                <input type="text" class="xlarge" id="cccvv" name="cccvv">
+                <p class="help-text">It's usually a three digit number on the back of your card</p>
+              </div>
+              <div id="card-type"></div>
+            </fieldset>
           </div>
         </div>
         <div class="row">
