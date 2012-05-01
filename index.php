@@ -100,6 +100,7 @@ if($_POST) {
         $('input', this).each(function(){
           if($(this).val() == '') {
             $(this).parents('.control-group').addClass('error');
+            $('.payment-errors').text('All fields are required.');
           } else {
             $(this).parents('.control-group').removeClass('error');
           }
@@ -107,12 +108,14 @@ if($_POST) {
         $('select', this).each(function(){
           if($(this).val() == '') {
             $(this).parents('.control-group').addClass('error');
+            $('.payment-errors').text('All fields are required.');
           } else {
             $(this).parents('.control-group').removeClass('error');
           }
         });
 
         if($('.error').length === 0) {
+          $('.payment-errors').text('');
           Stripe.createToken({
             number: $('#ccard').val(),
             cvc: $('#cccvv').val(),
@@ -153,7 +156,9 @@ if($_POST) {
 
       <!-- Example row of columns -->
       <div class="row">
-
+        <div class="span12">
+          <p class="payment-errors error"></p>
+        </div>
         <form action="/" method="post" id="gkmpay">
           <div class="span6">
             <legend>Personal Info</legend>
