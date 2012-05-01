@@ -1,6 +1,6 @@
 <?php
 if($_POST) {
-  require_once("/stripe/lib/Stripe.php");
+  require_once("stripe/lib/Stripe.php");
   // set your secret key: remember to change this to your live secret key in production
   // see your keys here https://manage.stripe.com/account
   Stripe::setApiKey("20CFf2y7xRHoVezUgAIDeX8rJFgWytkg");
