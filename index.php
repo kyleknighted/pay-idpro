@@ -1,4 +1,5 @@
 <?php
+$paid = false;
 if($_POST) {
   require_once("stripe/lib/Stripe.php");
   // set your secret key: remember to change this to your live secret key in production
@@ -17,6 +18,7 @@ if($_POST) {
     "card" => $token,
     "description" => "Invoice: $invoice")
   );
+  $paid = true;
 }
 
 ?>
@@ -156,12 +158,20 @@ if($_POST) {
     <div class="container main-wrap">
 
       <!-- Main hero unit for a primary marketing message or call to action -->
+      <?php if($paid) { ?>
+      <div class="hero-unit">
+        <h1>Thank you!</h1>
+        <p>Your payment has been processed.</p>
+        <p>Please contact me at <a href="mailto:kyle@idprojections.com">kyle@idprojections.com</a> if you have any issues using this system.</p>
+      </div>
+      <?php } else ?>
       <div class="hero-unit">
         <h1>Welcome to GKMOPPMYLEBNYDHMMC!</h1>
         <p>Which stands for 'Good Knight Multimedia Online Payment Processor to Make Your Life Easier Because Now You Don't Have to Mail Me a Check'.</p>
         <p>Please contact me at <a href="mailto:kyle@idprojections.com">kyle@idprojections.com</a> if you have any issues using this system.</p>
       </div>
-
+      <?php } ?>
+      
       <!-- Example row of columns -->
 
       <form action="/" method="post" id="gkmpay">
