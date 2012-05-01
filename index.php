@@ -36,8 +36,8 @@ if($_POST) {
     <!-- Le styles -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
-      body {
-        padding-top: 60px;
+      .main-wrap {
+        padding-top: 30px;
       }
       #jqcard-type { margin: 0; padding: 0; float: left; }
       #jqcard-type li {
@@ -142,7 +142,7 @@ if($_POST) {
       </div>
     </div>
 
-    <div class="container">
+    <div class="container main-wrap">
 
       <!-- Main hero unit for a primary marketing message or call to action -->
       <div class="hero-unit">
@@ -155,8 +155,8 @@ if($_POST) {
       <div class="row">
 
         <form action="/" method="post" id="gkmpay">
-          <div class="span5">
-            <legend>Billing Info</legend>
+          <div class="span6">
+            <legend>Personal Info</legend>
             <fieldset class="control-group">
               <label class="control-label" for="billing-name">Full Name</label>
               <div class="controls">
@@ -201,7 +201,7 @@ if($_POST) {
             </fieldset>
           </div>
           <div class="span6">
-              <legend>Enter Billing Info</legend>
+              <legend>Billing Info</legend>
               <fieldset class="control-group">
                 <label class="control-label" for="amount">Amount Paying</label>
                 <div class="controls">
@@ -224,7 +224,7 @@ if($_POST) {
                 </div>
               </fieldset>
               <fieldset class="control-group">
-                <label class="control-label" for="card-type">Choose Card Type</label>
+                <label class="control-label" for="card-type">Card Type</label>
                 <div class="controls">
                   <select name="card-type" id="card-type">
                     <option value="">Select One</option>
@@ -279,7 +279,7 @@ if($_POST) {
           </div>
           <div class="span12">
             <fieldset class="form-actions">
-              <input type="submit" class="btn btn-primary submit-button" value="Pay!">
+              <input type="submit" class="btn primary submit-button" value="Pay!">
             </fieldset>
           </div>
         </form>
