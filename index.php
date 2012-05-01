@@ -1,5 +1,6 @@
 <?php
 if($_POST) {
+  require_once("/stripe/lib/Stripe.php");
   // set your secret key: remember to change this to your live secret key in production
   // see your keys here https://manage.stripe.com/account
   Stripe::setApiKey("20CFf2y7xRHoVezUgAIDeX8rJFgWytkg");
@@ -35,8 +36,8 @@ if($_POST) {
     <!-- Le styles -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <style type="text/css">
-      .container {
-        padding-top: 30px;
+      body {
+        padding-top: 60px;
       }
       #jqcard-type { margin: 0; padding: 0; float: left; }
       #jqcard-type li {
@@ -136,12 +137,7 @@ if($_POST) {
     <div class="navbar">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="#">Creditcard</a>
-          <ul class="nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+          <a class="brand" href="#">GKMOPPMYLEBNYDHMMC</a>
         </div>
       </div>
     </div>
@@ -279,10 +275,12 @@ if($_POST) {
                 </div>
                 <div id="card-type"></div>
               </fieldset>
-              <fieldset class="form-actions">
-                <input type="submit" class="btn btn-primary submit-button" value="Pay!">
-              </fieldset>
             </form>
+          </div>
+          <div class="span12">
+            <fieldset class="form-actions">
+              <input type="submit" class="btn btn-primary submit-button" value="Pay!">
+            </fieldset>
           </div>
         </form>
       </div>
