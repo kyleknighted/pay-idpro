@@ -1,0 +1,27 @@
+.main-wrap {
+  padding-top: 30px;
+}
+#jqcard-type { margin: 0; padding: 0; float: left; }
+#jqcard-type li {
+  list-style: none;
+  float: left;
+  margin: 0 3px 0 0;
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url(img/ccards.png) no-repeat 0 0;
+  text-indent: -999em;
+}
+#jqcard-type li.visa { background-position: 0px 0px; }
+#jqcard-type li.visa.active { background-position: 0px -24px; }
+#jqcard-type li.mc { background-position: -24px 0px; }
+#jqcard-type li.mc.active { background-position: -24px -24px; }
+#jqcard-type li.amex { background-position: -48px 0px; }
+#jqcard-type li.amex.active { background-position: -48px -24px; }
+#jqcard-type li.disc { background-position: -72px 0px; }
+#jqcard-type li.disc.active { background-position: -72px -24px; }
+.cc-warning { color: #ff8400; clear: left; }
+.cc-error { color: #f00; clear: left; }
+.cc-success { color: #0c621c; clear: left; }
+
+#shipto-address { display: none; }
