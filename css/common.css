@@ -23,5 +23,5 @@
 .cc-warning { color: #ff8400; clear: left; }
 .cc-error { color: #f00; clear: left; }
 .cc-success { color: #0c621c; clear: left; }
-
+.controls { overflow: hidden; }
 #shipto-address { display: none; }

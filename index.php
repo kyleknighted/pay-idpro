@@ -137,21 +137,21 @@ if($_POST) {
               <label class="control-label" for="amount">Amount Paying</label>
               <div class="controls">
                 <input type="text" class="xlarge" id="amount" name="amount">
-                <p class="help-text">Please do not include the dollar sign ($)</p>
+                <p class="help-block">Please do not include the dollar sign ($)</p>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="invoice">Invoice Number</label>
               <div class="controls">
                 <input type="text" class="xlarge" id="invoice" name="invoice">
-                <p class="help-text">Please include the invoice number you are paying against</p>
+                <p class="help-block">Please include the invoice number you are paying against</p>
               </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="ccard">Credit Card Number</label>
               <div class="controls">
                 <input type="text" class="xlarge" id="ccard">
-                <p class="help-text">We accept Visa, MasterCard, Discover, and Amex.</p>
+                <p class="help-block">We accept Visa, MasterCard, Discover, and Amex.</p>
               </div>
             </div>
             <div class="control-group">
@@ -202,7 +202,7 @@ if($_POST) {
               <label class="control-label" for="cccvv">Security Code (CSV/CVV)</label>
               <div class="controls">
                 <input type="text" class="xlarge" id="cccvv">
-                <p class="help-text">It's usually a three digit number on the back of your card</p>
+                <p class="help-block">It's usually a three digit number on the back of your card</p>
               </div>
               <div id="card-type"></div>
             </div>
