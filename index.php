@@ -40,9 +40,9 @@ if($_POST) {
     
     <script src="js/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="js/jquery.creditcard.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://js.stripe.com/v1/" type="text/javascript"></script>
     <script>Stripe.setPublishableKey('<?php echo $_ENV["STRIPE_PUBLIC"]; ?>');</script>
     <script src="js/common.js" type="text/javascript" charset="utf-8"></script>
-    <script src="https://js.stripe.com/v1/" type="text/javascript"></script>
     
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="images/favicon.ico">

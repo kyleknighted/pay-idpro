@@ -9,7 +9,7 @@
   display: block;
   width: 24px;
   height: 24px;
-  background: url(img/ccards.png) no-repeat 0 0;
+  background: url(../img/ccards.png) no-repeat 0 0;
   text-indent: -999em;
 }
 #jqcard-type li.visa { background-position: 0px 0px; }
