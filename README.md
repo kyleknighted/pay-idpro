@@ -24,7 +24,7 @@ This is free, released under the [MIT License](http://www.opensource.org/license
 
 I do not guarantee that this code works beyond the date that I launched it. It worked at one point and it probably still works, you may have just done something wrong.
 
-If you'd like to donate your hard earned money to me so that I can continue to buy the fuel that helps me build (Bud Select), it'd be much aprpeciated. Also, while you're donating, you'll notice that this is also a demo of the application you're about to download.
+If you'd like to donate your hard earned money to me so that I can continue to buy the fuel that helps me build (Bud Select), it'd be much appreciated. Also, while you're donating, you'll notice that this is also a demo of the application you're about to download.
 
 [Donate and/or Demo](https://idpro.herokuapp.com/)
 
